@@ -41,42 +41,49 @@ String  default_filename = "iterations-0.pdf";
 
 int anc;
 int alt;
+int num_iter;
 
 LSystem system;
 
 void lectura() {
-  String anchura = JOptionPane.showInputDialog(frame, "Introduzca la anchura de la ventana: ");
-  String altura = JOptionPane.showInputDialog(frame, "Introduzca la altura de al ventana: ");
+  //String anchura = JOptionPane.showInputDialog(frame, "Introduzca la anchura de la ventana: ");
+  //String altura = JOptionPane.showInputDialog(frame, "Introduzca la altura de al ventana: ");
   
-  anc = parseInt(anchura);
-  alt = parseInt(altura);
-
+  //anc = parseInt(anchura);
+  //alt = parseInt(altura);
+  
+  String numIter = JOptionPane.showInputDialog(frame, "Introduzca el numero de iteraciones: ");
+  num_iter = parseInt(numIter);
+  
 }
 
 void setup ()
 {
-  int iterations = numero_iteraciones;
-
-  size(800, 600);
+  size(750, 500);
   background(250);
   frameRate(60);
   smooth();
-  system = new LSystem();
-  system.iterate(iterations);
   
-  //system.draw();
+  this.creacionArbol();
+}
+
+void creacionArbol () {
+  lectura();
+  
+  system = new LSystem();
+  system.iterate(num_iter);
 }
 
 void draw ()
 {
   // To draw segment by segment, rename this routine to draw()
   // and remove system.draw() from setup().
-  translate(100, yInicio);
+  translate(400, 450);
+  scale(0.5f);
   rotate(1.5 * PI);
 
   //system.draw();
-  for (int i = 0; i < random(10, 50); i++)
-  {
+  for (int i = 0; i < random(10, 50); i++) {
     system.drawSegment();
   }
 }

@@ -1,5 +1,27 @@
 /*
-  Clase LSystem
+
+    Implementation of Lindenmayer Systems:
+    emulates plant growth via a simple formal grammar.
+
+    Copyright (c) Daniel Jones 2007.
+    http://www.erase.net/
+   
+    ----------------------------------------------------------------------
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
 */
 
 class LSystem
@@ -19,8 +41,7 @@ class LSystem
   float extension = extensionRama;
   float extension_chaos = extensionRama_chaos;
 
-  LSystem ()
-  {
+  LSystem () {
     axiom = "F";
     string = "F";
     state = new float[3];
@@ -32,13 +53,11 @@ class LSystem
     state_stack = new float[4096][3];
   }
   
-  void iterate ()
-  {
+  void iterate () {
     this.iterate(1);
   }
   
-  void iterate (int count)
-  {
+  void iterate (int count) {
     for (int i = 0; i < count; i++)
     {
       String string_next = "";
@@ -57,24 +76,22 @@ class LSystem
     } 
   }
 
-  
-  void _draw()
-  {
-      //beginRecord(PDF, default_filename);
-      translate(100, yInicio);
-      rotate(1.5 * PI);
-      strokeWeight(0.5);
+  // DRAW SIN USAR
+  //void _draw() {
+  //    //beginRecord(PDF, default_filename);
+  //    translate(100, yInicio);
+  //    rotate(1.5 * PI);
+  //    strokeWeight(0.5);
 
-      for (int i = 0; i < string.length(); i++)
-      {
-        this.drawSegment();
-      }
+  //    for (int i = 0; i < string.length(); i++)
+  //    {
+  //      this.drawSegment();
+  //    }
       
-      //endRecord();
-  }
+  //    //endRecord();
+  //}
   
-  void drawSegment ()
-  {
+  void drawSegment () {
     if (pos >= string.length())
        { return; }
     
@@ -83,8 +100,8 @@ class LSystem
     {
           case 'F':
             float ext_this = extension + random(-1.0 * extension * extension_chaos, extension * extension_chaos);
-            float x_delta = ext_this * sin(state[2]);
-            float y_delta = ext_this * cos(state[2]);
+            float x_delta = ext_this * cos(state[2]);
+            float y_delta = ext_this * sin(state[2]);
 
             stroke(col);
             strokeWeight(0.5);
