@@ -64,7 +64,7 @@ El proyecto se basa en 4 ficheros:
 - Agradecimientos a los compañeros **@IgorMy** y **@Narovik**, por su explicación de aspectos referentes a la creación de los nodos de conexiones, en su trabajo es conocido como vectorPesos[].
 
 ## Bibliografía
-[0] https://discourse.processing.org/t/queasycam-controlling-functions-with-cp5/9944/2
+[0] https://discourse.processing.org/t/queasycam-controlling-functions-with-cp5/9944/2  
 [1] http://www.erase.net/projects/l-systems/  
 [2] https://stackoverflow.com/questions/16129537/how-to-animate-a-3d-curve-between-two-points-on-a-map  
 [3] https://vormplus.be/full-articles/drawing-a-cylinder-with-processing  
