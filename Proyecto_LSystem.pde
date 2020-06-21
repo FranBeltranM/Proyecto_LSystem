@@ -1,13 +1,5 @@
 import queasycam.*;
 
-// VALORES INICIALES CÁMARA //
-float angulo_vision = -PI/2;
-float distancia_visionado = 800;
-
-// Posición Inicial
-float posicionY = -300;
-float posicionX = 0;
-
 QueasyCam cam;
 float angx = 0, angy, dang = TWO_PI/360;
 
@@ -87,13 +79,6 @@ void setup ()
   suelo_box.setTexture(suelo_texture);
 }
 
-//void mouseWheel(MouseEvent event) {
-// float valor_rueda = event.getCount();
- 
-// if( valor_rueda > 0 ) distancia_visionado += 50;
-//  else distancia_visionado -= 50;
-//}
-
 void mouseWheel(MouseEvent event) {
   float e = event.getCount();
   if ( keyPressed && key == 'x' ) cam.position.x += e*10;                     // [x] 
@@ -102,7 +87,6 @@ void mouseWheel(MouseEvent event) {
   if ( keyPressed && key == 'v' ) angx += e*dang;                          // [v]  
   if ( keyPressed && key == 'h' ) angy += e*dang;                          // [h]  
 }
-
 
 void draw() {
 
@@ -130,7 +114,6 @@ void draw() {
 
    rotate(angx);
    rotate(angy);
-
 
    system.draw();
    if(keyPressed) {
