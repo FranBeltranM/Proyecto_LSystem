@@ -5,6 +5,13 @@
 :construction_worker: [Francisco Jesús Beltrán Moreno (@FranBeltranM)](https://github.com/FranBeltranM)  
 :construction_worker: [Manuel Jesús Grávalos Cano (@MGravalos)](https://github.com/MGravalos)  
 
+## Dependencias
+<p align="center">
+  <img width="763" height="505" src="images/dependencias.png">
+</p>
+
+Para la cámara libre [0].
+
 ## Introducción
 En este repositorio se ha tratado de desarrollar una representación en el entorno [Processing](https://processing.org/) del sistema de generación de árboles fractales [LSystem](https://es.wikipedia.org/wiki/Sistema-L).
 
@@ -34,13 +41,13 @@ El proyecto se basa en 4 ficheros:
 - **Captura de pantalla**: Indicando en el cuadro de texto, al pulsar la tecla correspondiente nos generará una captura de ese instante.
 
 ## Controles de la cámara
-- **W**: Elevar nuestro punto de visión del eje Y.
-- **S**: Disminuir nuestro punto de visión del eje Y.
-- **A**: Giro de la cámara a izquierdas.
-- **D**: Giro de la cámara a derechas.
-- **R**: Reinicia la cámara a los valores por defecto.
-- **Rueda del ratón, positiva**: Nos acerca al objeto.
-- **Rueda del ratón, negativa**: Nos aleja del objeto.
+- **IMPORTANTE: TODO EL MOVIMIENTO ES USANDO LOS BOTONES INDICADOS MÁS LA RULETA DEL RATÓN**
+- **A EXCEPCIÓN DEL MOVIMIENTO DEL RATÓN QUE ES LIBRE**
+- **X**: Cambiará los valores del eje X.
+- **Y**: Cambiará los valores del eje Y.
+- **Z**: Cambiará los valores del eje Z.
+- **V**: Giro vertical.
+- **H**: Giro horizontal.
 - **C**: Captura de pantalla.
 
 ## Símbología de L-System
@@ -54,9 +61,10 @@ El proyecto se basa en 4 ficheros:
 - Como código fuente del L-System se ha usado el trabajo de **Daniel John Jones** [1].
 - Para la representación de las ramas mediante cilindros se ha usado el artículo **Drawing a Cylinder with Processing** [2].
 - Para entender el concepto de nodos y su uso se ha usado este post de **StackOverflow** [3].
-- Agradecimientos a los compañeros **@IgorMy** y **@Narovik**, por su explicación de aspectos referentes a la creación de los nodos de conexiones.
+- Agradecimientos a los compañeros **@IgorMy** y **@Narovik**, por su explicación de aspectos referentes a la creación de los nodos de conexiones, en su trabajo es conocido como vectorPesos[].
 
 ## Bibliografía
+[0] https://discourse.processing.org/t/queasycam-controlling-functions-with-cp5/9944/2
 [1] http://www.erase.net/projects/l-systems/  
 [2] https://stackoverflow.com/questions/16129537/how-to-animate-a-3d-curve-between-two-points-on-a-map  
 [3] https://vormplus.be/full-articles/drawing-a-cylinder-with-processing  
