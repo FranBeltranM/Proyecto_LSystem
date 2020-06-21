@@ -8,7 +8,9 @@
 ## Introducción
 En este repositorio se ha tratado de desarrollar una representación en el entorno [Processing](https://processing.org/) del sistema de generación de árboles fractales [LSystem](https://es.wikipedia.org/wiki/Sistema-L).
 
-
+<p align="center">
+  <img width="400" height="300" src="images/captura.jpg">
+</p>
 
 ## Estructura del proyecto
 El proyecto se basa en 4 ficheros:
@@ -18,6 +20,11 @@ El proyecto se basa en 4 ficheros:
 - **Menu**: Es el encargado de solicitar los datos al usuario.
 
 ## Interfaz de Java
+
+<p align="center">
+  <img width="203" height="431" src="images/interfaz.png">
+</p>
+
 - **L-System**: Nos permite elegir entre distintas gramáticas.
 - **Número de iteraciones (n)**: Cuántas veces vamos a iterar nuestro árbol.
 - **Ángulo de expansión (grados)**: Posibles valores con los que podría orientarse nuestra rama.
@@ -46,7 +53,7 @@ El proyecto se basa en 4 ficheros:
 ## Referencias
 - Como código fuente del L-System se ha usado el trabajo de **Daniel John Jones** [1].
 - Para la representación de las ramas mediante cilindros se ha usado el artículo **Drawing a Cylinder with Processing** [2].
-- Para entender el concepto de nodos y su uso se ha usado este post de StackOverflow [3].
+- Para entender el concepto de nodos y su uso se ha usado este post de **StackOverflow** [3].
 - Agradecimientos a los compañeros **@IgorMy** y **@Narovik**, por su explicación de aspectos referentes a la creación de los nodos de conexiones.
 
 ## Bibliografía
