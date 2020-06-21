@@ -1,8 +1,12 @@
 # Representación de LSystem
 :office: Universidad de Huelva (UHU) - Escuela Técnica Superior de Ingeniería (ETSI)
+
 :calendar: Curso 2019-2020
+
 :mortar_board: Realidad Virtual
+
 :octocat: [Francisco Jesús Beltrán Moreno (@FranBeltranM)](https://github.com/FranBeltranM)
+
 :octocat: [Manuel Jesús Grávalos Cano (@...)](...)
 
 ## Introducción
