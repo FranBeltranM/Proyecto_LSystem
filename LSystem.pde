@@ -36,8 +36,6 @@ class LSystem
   float extension = default_extension;
   float extension_chaos = default_extension_chaos;
   
-  boolean dibujado_tronco_inicial = false;
-  
   LSystem () {
     axiom = "F";
     string = "F";
@@ -98,36 +96,33 @@ class LSystem
     char c = string.charAt(pos);
     switch (c) {
         case 'F':
-          dibujado_tronco_inicial = false; //<>//
           float ext_this = extension + random(-1.0 * extension * extension_chaos, extension * extension_chaos);
           float x_delta = ext_this * sin(state[2]);
           float y_delta = -ext_this * cos(state[2]);
           float z_delta = 0;
 
-          if (stack_size == 0) {
-            z_delta = 0;
-          } else if(state[3] == 0){
-            z_delta = ext_this * random(-90 * PI / 180, 90 * PI / 180);
-          } else if(state[3] > 0) {
-            z_delta = ext_this * random(-45 * PI / 180, 90 * PI / 180);
-          } else {
-            z_delta = ext_this * random(-90 * PI / 180, 45 * PI / 180);
-          }
+          // ANGULO BASE //
+          if (stack_size == 0)
+            z_delta = random(-5,5);
+            else {
+          if(state[3] == 0) // COMIENZO
+            z_delta = ext_this * random(-0.75, 0.75);
           
-          if (pos == 0) {
-           ext_this = 100;
-           z_delta = 0;
-           y_delta = -ext_this * cos(state[2]);
-           dibujado_tronco_inicial = true;
+          if(state[3] > 0) // SI TENDENCIA POSITIVA
+            z_delta = ext_this * random(-0.25, 0.75);
+            
+          if(state[3] < 0) // SI TENDENCIA NEGATIVA
+            z_delta = ext_this * random(-0.75, 0.75);
           }
           
           PVector inicio_rama = new PVector(state[0], state[1], state[3]);
           PVector fin_rama = new PVector(state[0] + x_delta, state[1] + y_delta, state[3] + z_delta);
           
+          // SI TERMINAMOS UNA RAMA
           if( pos+1 <= string.length() && string.charAt(pos+1) == ']' )
-            dibujaRama(inicio_rama, fin_rama, true, dibujado_tronco_inicial, stack_size);
+            dibujaRama(inicio_rama, fin_rama, true, stack_size);
           else
-            dibujaRama(inicio_rama, fin_rama, false, dibujado_tronco_inicial, stack_size);
+            dibujaRama(inicio_rama, fin_rama, false, stack_size);
 
           state[0] += x_delta;
           state[1] += y_delta;
