@@ -1,5 +1,5 @@
 // https://stackoverflow.com/questions/16129537/how-to-animate-a-3d-curve-between-two-points-on-a-map
-void dibujaRama(PVector inicio, PVector fin, boolean finalRama, boolean generadoTronco, int nivel) {
+void dibujaRama(PVector inicio, PVector fin, boolean finalRama, int nivel) {
   PVector vector_unitario = new PVector(fin.x - inicio.x, fin.y - inicio.y, fin.z - inicio.z);
   
   float rho = sqrt(pow(vector_unitario.x,2) + pow(vector_unitario.y,2) + pow(vector_unitario.z,2));
@@ -19,12 +19,9 @@ void dibujaRama(PVector inicio, PVector fin, boolean finalRama, boolean generado
   noStroke();
   
   if(finalRama)
-   drawCylinder( 20, random(4), vectorPesos[nivel], inicio.dist(fin));
+    drawCylinder( 20, random(4), vectorPesos[nivel], inicio.dist(fin));
   else
-   if(!generadoTronco)
-     drawCylinder( 20, vectorPesos[nivel], vectorPesos[nivel]+1, inicio.dist(fin));
-   else
-     drawCylinder( 10, vectorPesos[nivel], 20, inicio.dist(fin));
+    drawCylinder( 20, vectorPesos[nivel], vectorPesos[nivel]+1, inicio.dist(fin));
 
   popMatrix();
 }
