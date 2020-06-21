@@ -1,3 +1,5 @@
+import queasycam.*;
+
 // VALORES INICIALES CÁMARA //
 float angulo_vision = -PI/2;
 float distancia_visionado = 800;
@@ -5,6 +7,9 @@ float distancia_visionado = 800;
 // Posición Inicial
 float posicionY = -300;
 float posicionX = 0;
+
+QueasyCam cam;
+float angx = 0, angy, dang = TWO_PI/360;
 
 // VALORES LSYSTEM
 LSystem system;
@@ -14,11 +19,10 @@ int vectorPesos[] = {14, 8, 6, 5, 5, 4, 4, 3, 2, 1, 0};
 
 PShape uniones[] = new PShape[vectorPesos.length];
 PShape suelo_box;
-PShape hoja;
 
 String default_rule = "F[+F]F[-F]";
 int    default_iterations = 5;
-float  default_angle = PI / 10;
+float  default_angle = PI / 2;
 float  default_angle_chaos = 0.5;
 float  default_extension = 10;
 float  default_extension_chaos = 0.5;
@@ -45,7 +49,15 @@ void setup ()
   surface.setTitle("LSystem - Manuel Jesús Grávalos Cano - Francisco Jesús Beltrán Moreno");
   interfaz = new Menu(this);
   semilla = int( random( second() * minute() * hour() ) );
-  size(800, 600, P3D);
+  size(1000, 800, P3D);
+  cam = new QueasyCam(this);
+  cam.sensitivity = 1;
+  cam.speed = 0.1;
+  cam.position.x = 400;
+  cam.position.y = -800;
+  cam.position.z = -1400;
+  perspective(PI/3, (float)width/height, 0.2, 10000);
+
   frameRate(60);
   smooth();
   lights();
@@ -75,12 +87,22 @@ void setup ()
   suelo_box.setTexture(suelo_texture);
 }
 
-void mouseWheel(MouseEvent event) {
- float valor_rueda = event.getCount();
+//void mouseWheel(MouseEvent event) {
+// float valor_rueda = event.getCount();
  
- if( valor_rueda > 0 ) distancia_visionado += 50;
-  else distancia_visionado -= 50;
+// if( valor_rueda > 0 ) distancia_visionado += 50;
+//  else distancia_visionado -= 50;
+//}
+
+void mouseWheel(MouseEvent event) {
+  float e = event.getCount();
+  if ( keyPressed && key == 'x' ) cam.position.x += e*10;                     // [x] 
+  if ( keyPressed && key == 'y' ) cam.position.y += e*10;                     // [y] 
+  if ( keyPressed && key == 'z' ) cam.position.z += e*10;                     // [z] 
+  if ( keyPressed && key == 'v' ) angx += e*dang;                          // [v]  
+  if ( keyPressed && key == 'h' ) angy += e*dang;                          // [h]  
 }
+
 
 void draw() {
 
@@ -106,44 +128,19 @@ void draw() {
    translate(0,5,0);
    shape(suelo_box);
 
-   system.draw();
+   rotate(angx);
+   rotate(angy);
 
+
+   system.draw();
    if(keyPressed) {
       switch(key) {
-         case 'r':
-         case 'R':
-          angulo_vision = -PI/2;
-          distancia_visionado = 800;
-          posicionY = -300;
-          posicionX = 0;
-          break;
-         case 'a':
-         case 'A':
-           angulo_vision -= PI/50;
-           break;
-         case 'd':
-         case 'D':
-           angulo_vision += PI/50;
-           break;
-         case 'w':
-         case 'W':
-           posicionY -= 10;
-           break;
-         case 's':
-         case 'S':
-           posicionY += 10;
-           break;
          case 'c':
          case 'C':
            save(salida_fichero);
            break;
       }
     }
-    // X = cos(angulo_vision) * distancia + posicion_actual
-    // Y = posicionY
-    // Z = sin(angulo_vision) * distancia
-    // camera(eyeX, eyeY, eyeZ, centerX, centerY, centerZ, upX, upY, upZ)
-    camera(cos(angulo_vision) * distancia_visionado + posicionX, posicionY, sin(angulo_vision) * distancia_visionado, posicionX, posicionY, 0, 0, 1, 0);  
   }
 }
 
