@@ -12,6 +12,8 @@
 
 Para la cámara libre [0].
 
+## NOTAS: Si descarga el contenido de este repositorio, observe que la carpeta mantenga el mismo nombre, es decir, al descargarlo obtendrá la carpeta Proyecto_LSystem-master, debe renombrarla a Proyecto_LSystem. Sin esto, Processing no podrá ejecutar el main file.
+
 ## Introducción
 En este repositorio se ha tratado de desarrollar una representación en el entorno [Processing](https://processing.org/) del sistema de generación de árboles fractales [LSystem](https://es.wikipedia.org/wiki/Sistema-L).
 
